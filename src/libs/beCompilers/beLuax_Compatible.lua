@@ -21,13 +21,26 @@ IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ]]
 
+-- [[ Math. ]]
+
 local cos = function (x)
 	return math.cos(x * -math.pi * 2)
+end
+local flr = math.floor
+local rnd = function (x)
+	return math.random() * x
+end
+local sgn = function (x)
+	return x >= 0 and 1 or -1
 end
 local sin = function (x)
 	return math.sin(x * -math.pi * 2)
 end
-local flr = math.floor
+local time = function ()
+	return DateTime.toSeconds(DateTime.ticks())
+end
+
+-- [[ List. ]]
 
 local add = function (lst, elem, index)
 	if index == nil then
@@ -48,9 +61,6 @@ local all = function (lst)
 		end
 	end
 end
-local circfill = function (x, y, r, col)
-	circ(x, y, r, true, col)
-end
 local del = function (lst, elem)
 	if not lst then
 		return
@@ -68,14 +78,11 @@ local foreach = function (lst, pred)
 		pred(elem)
 	end
 end
-local rnd = function (x)
-	return math.random() * x
-end
-local sgn = function (x)
-	return x >= 0 and 1 or -1
-end
-local time = function ()
-	return DateTime.toSeconds(DateTime.ticks())
+
+--[[ Graphics. ]]
+
+local circfill = function (x, y, r, col)
+	circ(x, y, r, true, col)
 end
 
 local _palettes = {

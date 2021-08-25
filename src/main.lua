@@ -23,13 +23,21 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 require 'libs/beParticles/beParticles'
 
+--[[ Compatibility states. ]]
+
 Canvas.main:resize(128, 128)
+
+--[[ Compatibility functions. ]]
 
 local cos = function (x)
 	return math.cos(x * -math.pi * 2)
 end
 local sin = function (x)
 	return math.sin(x * -math.pi * 2)
+end
+local _t = nil
+local t = function ()
+	return _t
 end
 
 local add = function (lst, elem, index)
@@ -56,15 +64,10 @@ local foreach = function (lst, pred)
 		pred(elem)
 	end
 end
+
 local rectfill = function (x0, y0, x1, y1, col)
 	rect(x0, y0, x1, y1, true, col)
 end
-
-local _t = nil
-local t = function ()
-	return _t
-end
-
 local _palettes = {
 	Color.new(0,0,0,255),
 	Color.new(29,43,83,255),
@@ -86,7 +89,6 @@ local _palettes = {
 local C = function (index)
 	return _palettes[index + 1]
 end
-
 local _sprites = {
 	Resources.load('assets/sprite.spr')
 }
@@ -94,24 +96,23 @@ local S = function (_)
 	return _sprites[1]
 end
 
+--[[ Demo code. ]]
+
 --pico-ps particle system
 --max kearney
 --created: april 2019
 --updated: october 2020
----------------------
+--
+--ported by Tony Wang, Aug. 2021
 
--------------------------------------------------- globals
-show_demo_info = true
-show_dude = false
-my_emitters = nil
-emitter_type = 1
-emitters = {"fire", "water spout", "rain", "stars", "explosion (burst)", "confetti (burst)", "space warp", "amoebas", "portal", "whirly bird", "spiral galaxy monster", "structures (mouse)", "structures (arrows)"}
+local show_demo_info = true
+local show_dude = false
+local my_emitters = nil
+local emitter_type = 1
+local emitters = {"fire", "water spout", "rain", "stars", "explosion (burst)", "confetti (burst)", "space warp", "amoebas", "portal", "whirly bird", "spiral galaxy monster", "structures (mouse)", "structures (arrows)"}
 
-global_angle = 0
+local global_angle = 0
 
--------------------------------------------------- demo code
--- these are functions to help the demo run. you can copy/model from here,
--- but most of this stuff isn't strictly necessary for an emitter to run
 function draw_demo()
 	foreach(my_emitters, function(obj) obj:draw() end)
 	if (show_demo_info) then
