@@ -30,5 +30,12 @@ Exporting.
 beCompilers = {
 	version = '1.0.0',
 
+	-- Extended Luax to regular Lua compiler.
+	-- Added support for:
+	--   operator `+=`, `-=`
+	-- Added a compatibility layer to support:
+	--   `cos(...)`, `flr(...)`, `rnd(...)`, `sgn(...)`, `sin(...)`, `time(...)`,
+	--   `add(...)`, `all(...)`, `del(...)`, `foreach(...)`,
+	--   old `circ(...)`, `circfill(...)`, old `rect(...)`, `rectfill(...)`, etc.
 	compileLuax = beLuax.compile
 }

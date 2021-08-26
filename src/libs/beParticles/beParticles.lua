@@ -23,14 +23,16 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 require 'libs/beCompilers/beCompilers'
 
-local ps = beCompilers.compileLuax(
+-- Compile the particle system implementation.
+local chunk = beCompilers.compileLuax(
 	-- Credits:
 	--   pico-ps created by Maxwell Dexter
 	--     https://github.com/MaxwellDexter/pico-ps
 	--     https://maxwelldexter.itch.io/pico-ps
 	'libs/beParticles/pico-ps.lua'
 )
-ps()
+-- Inject the particle system to global scope.
+chunk()
 
 --[[
 Exporting.

@@ -33,12 +33,14 @@ end
 Compiler.
 ]]
 
--- Compiles from an asset.
+-- Compiles Luax source code to regular Lua from an asset.
 local function compile(asset)
+	-- Prepare.
 	if not asset then
 		error('Invalid asset.')
 	end
 
+	-- Read source.
 	local bytes = Project.main:read(asset)
 	if not bytes then
 		error('Invalid asset.')
@@ -46,6 +48,15 @@ local function compile(asset)
 	bytes:poke(1)
 	local src = bytes:readString()
 
+	-- Read compatibility layer.
+	bytes = Project.main:read('libs/beCompilers/beLuax_Compatible.lua')
+	if not bytes then
+		error('Invalid asset.')
+	end
+	bytes:poke(1)
+	local com = bytes:readString()
+
+	-- Compile source.
 	local dst = ''
 	for ln in src:gmatch('([^\n]*)\n?') do
 		if #ln > 0 then
@@ -69,13 +80,7 @@ local function compile(asset)
 		end
 	end
 
-	bytes = Project.main:read('libs/beCompilers/beLuax_Compatible.lua')
-	if not bytes then
-		error('Invalid asset.')
-	end
-	bytes:poke(1)
-	local com = bytes:readString()
-
+	-- Finish.
 	local full = com .. '\n' .. dst
 
 	return load(full, asset) -- Return loaded and parsed Lua chunk.

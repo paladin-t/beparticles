@@ -212,27 +212,20 @@ Get Bitty Engine: https://store.steampowered.com/app/1386180/
       }
     </script>
     <script type="text/javascript">
-      var search = location.search || '';
-      if (search && search[0] == '?')
-        search = search.substr(1);
-      var dev = search.indexOf('dev=1') >= 0;
-      if (dev) {
+      // var search = location.search || '';
+      // if (search && search[0] == '?')
+      //   search = search.substr(1);
+      // var dev = search.indexOf('dev=1') >= 0;
+      // if (dev) {
         var txt = '';
-        txt += '<div style="margin: 8px 0 0 8px;">Development note:</div>';
-        txt += '<ul>';
-        txt += '<li>Packed project can be no bigger than 64MB</li>';
-        txt += '<li>HTML build doesn\'t trigger `quit()` entry</li>';
-        txt += '<li>The `Net` module is disabled</li>';
-        txt += '<li>File dialog is disabled</li>';
-        txt += '<li>Fullscreen does not always work in all browsers</li>';
-        txt += '</ul>';
+        txt += 'Source code: <a href="https://github.com/paladin-t/beparticles/" target="_blank">GitHub</a>';
         var tips = document.getElementById('tips');
         tips.innerHTML = txt;
         tips.style.display = 'block';
-      } else {
-        var tips = document.getElementById('tips');
-        tips.style.display = 'none';
-      }
+      // } else {
+      //   var tips = document.getElementById('tips');
+      //   tips.style.display = 'none';
+      // }
     </script>
     <script async type="text/javascript" src="bitty.js"></script>
   </body>

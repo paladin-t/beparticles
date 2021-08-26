@@ -1,18 +1,38 @@
 # beParticles
 
-beParticles is a particle system for [Bitty Engine](https://github.com/paladin-t/bitty/).
+beParticles is a particle system implemented in pure Lua for [Bitty Engine](https://github.com/paladin-t/bitty/). It is ported from [MaxwellDexter/pico-ps](https://github.com/MaxwellDexter/pico-ps).
+
+The idea is to port the original PICO-8 implementation to Bitty Engine in as few modification as possible, it is done with an extended Luax to regular Lua compiler and a compatibility layer. It makes it easy to synchronize with future version.
+
+Try it out [in browser](https://paladin-t.github.io/beparticles/).
 
 ### Features
 
 "beParticles" implements:
 
-* TODO
+* Continuous emissions (default)
+* Burst emissions
+* Gravity
+* Random colors
+* Speed over lifetime and speed spread
+* Life spread
+* Angles and angle spread
+* Size over lifetime and size spread
+* Emission areas
+* Color over life
+* Sprite animation
+* Random sprites
+* Object Pooling
 
 ### Glance
 
-![beParticles 1](imgs/beParticles1.png)
+Play [in browser](https://paladin-t.github.io/beparticles/).
 
-![beParticles 2](imgs/beParticles2.png)
+![](imgs/beParticles1.gif)
+
+![](imgs/beParticles2.gif)
+
+![](imgs/beParticles3.gif)
 
 ### Usage
 
@@ -24,12 +44,4 @@ Setup:
 
 Code:
 
-```lua
-require 'libs/beParticles/beParticles'
-
-function setup()
-end
-
-function update(delta)
-end
-```
+See [MaxwellDexter/pico-ps](https://github.com/MaxwellDexter/pico-ps) for details.
