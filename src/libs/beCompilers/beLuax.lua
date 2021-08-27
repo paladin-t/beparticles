@@ -34,7 +34,7 @@ Compiler.
 ]]
 
 -- Compiles Luax source code to regular Lua from an asset.
-local function compile(asset)
+local function compile(asset, env)
 	-- Prepare.
 	if not asset then
 		error('Invalid asset.')
@@ -83,7 +83,11 @@ local function compile(asset)
 	-- Finish.
 	local full = com .. '\n' .. dst
 
-	return load(full, asset) -- Return loaded and parsed Lua chunk.
+	if env == nil then
+		return load(full, asset, 't')      -- Return loaded and parsed Lua chunk.
+	else
+		return load(full, asset, 't', env) -- Return loaded and parsed Lua chunk.
+	end
 end
 
 --[[
