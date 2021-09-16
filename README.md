@@ -45,3 +45,13 @@ Setup:
 Code:
 
 See [MaxwellDexter/pico-ps](https://github.com/MaxwellDexter/pico-ps) for details.
+
+Note:
+
+Bitty Engine uses the standard Lua coordinates where rotation angle starts from X+ and grows clockwise, with range of values from `0` to `2 * PI`.
+
+![](imgs/polar1.png)
+
+beParticles (pico-ps) starts from X+ but grows anticlockwise, with range of values from `0.0` to `1.0`.
+
+![](imgs/polar2.png)
