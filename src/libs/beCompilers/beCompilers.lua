@@ -28,7 +28,7 @@ Exporting.
 ]]
 
 beCompilers = {
-	version = '1.0.1',
+	version = '1.0.2',
 
 	-- Extended Luax to regular Lua compiler.
 	-- Added support for:

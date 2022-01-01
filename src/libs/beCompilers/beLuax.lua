@@ -49,7 +49,7 @@ local function compile(asset, env)
 	local src = bytes:readString()
 
 	-- Read compatibility layer.
-	bytes = Project.main:read('libs/beCompilers/beLuax_Compatible.lua')
+	bytes = Project.main:read('libs/beCompilers/beLuax_Compatible.luax')
 	if not bytes then
 		error('Invalid asset.')
 	end

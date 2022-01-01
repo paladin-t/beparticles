@@ -29,7 +29,7 @@ local chunk = beCompilers.compileLuax(
 	--   pico-ps created by Maxwell Dexter
 	--     https://github.com/MaxwellDexter/pico-ps
 	--     https://maxwelldexter.itch.io/pico-ps
-	'libs/beParticles/pico-ps.lua'
+	'libs/beParticles/pico-ps.luax'
 )
 -- Inject the particle system to global scope.
 chunk()
@@ -39,5 +39,5 @@ Exporting.
 ]]
 
 beParticles = {
-	version = '1.0.1'
+	version = '1.0.2'
 }
