@@ -59,24 +59,25 @@ local function compile(asset, env)
 	-- Compile source.
 	local dst = ''
 	for ln in src:gmatch('([^\n]*)\n?') do
-		if #ln > 0 then
-			ln = ln:gsub('\'', '"')
+		local ln_ = ln
+		if #ln_ > 0 then
+			ln_ = ln_:gsub('\'', '"')
 			local inc, dec =
-				ln:find('+='), ln:find('-=')
+				ln_:find('+='), ln_:find('-=')
 			if inc then
-				local head = ln:sub(1, inc - 1)
-				local tail = ln:sub(inc + 2)
+				local head = ln_:sub(1, inc - 1)
+				local tail = ln_:sub(inc + 2)
 				local token = trim(head)
-				ln = head .. '= ' .. token .. ' +' .. tail -- Concat parts.
+				ln_ = head .. '= ' .. token .. ' +' .. tail -- Concat parts.
 			elseif dec then
-				local head = ln:sub(1, dec - 1)
-				local tail = ln:sub(dec + 2)
+				local head = ln_:sub(1, dec - 1)
+				local tail = ln_:sub(dec + 2)
 				local token = trim(head)
-				ln = head .. '= ' .. token .. ' -' .. tail -- Concat parts.
+				ln_ = head .. '= ' .. token .. ' -' .. tail -- Concat parts.
 			end
-			dst = dst .. ln .. '\n'                        -- Concat lines.
+			dst = dst .. ln_ .. '\n'                        -- Concat lines.
 		else
-			dst = dst .. ln .. '\n'
+			dst = dst .. ln_ .. '\n'
 		end
 	end
 
