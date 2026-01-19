@@ -1,7 +1,7 @@
 --[[
 The MIT License
 
-Copyright (C) 2021 Tony Wang
+Copyright (C) 2021 - 2026 Tony Wang
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in
@@ -39,5 +39,5 @@ Exporting.
 ]]
 
 beParticles = {
-	version = '1.0.2'
+	version = '1.5.0'
 }
